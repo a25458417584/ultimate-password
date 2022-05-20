@@ -10,7 +10,6 @@ public:
 	Player();
 	Player(string);
 	void setName(string);
-	void setGuessTimes(int);
 	string getName()const;
 	int getPoint()const;
 	void print();
