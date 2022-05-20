@@ -15,10 +15,6 @@ void Player::setName(string name)
 {
 	this->name = name;
 }
-void Player::setGuessTimes(int guessTimes)
-{
-	this->guessTimes = guessTimes;
-}
 string Player::getName()const
 {
 	return name;
@@ -29,7 +25,7 @@ int Player::getPoint()const
 }
 void Player::print()
 {
-
+	cout << "Player name:" << getName() << ", guessTimes:" << getGuessTimes() << endl;
 }
 void Player::setPoint(int point)
 {
