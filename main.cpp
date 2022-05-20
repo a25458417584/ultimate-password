@@ -11,23 +11,21 @@ int main()
 	string name;
 	cout << "Enter your name: ";
 	cin >> name;
-	Player player(name, 0);
+	Player player(name);
 	int max = 100, min = 0;
 
 	int guessNumber = rand() % 101;
+	cout << guessNumber << endl;
 	int PlayerNumber = 0;
-	int PlayerNumber;
-	string isPlayAgain = "n";
+	string isPlayAgain = "y";
+
 	cout << "Enter your guess number(range:0~100): ";
 	cin >> PlayerNumber;
-	
+
 	while (isPlayAgain == "y")
 	{
 		while (!(PlayerNumber == guessNumber))
 		{
-			cout << "Enter your guess number: ";
-			cin >> PlayerNumber;
-
 			if (PlayerNumber < min || PlayerNumber > max)
 			{
 				cout << "out of range, please Enter again" << endl;
@@ -36,39 +34,41 @@ int main()
 			{
 				if (PlayerNumber < guessNumber)
 				{
-					cout << "Not correct number in :";
 					min = PlayerNumber + 1;
-					cout << "not correct number , now number range in" << min << "~" << max << endl;
-					//player.plusGuessTimes();
 					cout << "not correct number , now number range in " << min << "~" << max << endl;
 					player.plusGuessTimes();
 				}
 
 				if (PlayerNumber > guessNumber)
 				{
-					cout << "Not correct number in :";
 					max = PlayerNumber - 1;
-					cout << "not correct number , now number range in" << min << "~" << max << endl;
-					//player.plusGuessTimes();
 					cout << "not correct number , now number range in " << min << "~" << max << endl;
 					player.plusGuessTimes();
 				}
 				if (PlayerNumber == guessNumber)
 				{
-					//player.plusGuessTimes();
 					player.plusGuessTimes();
 					break;
 				}
 			}
-			player.plusGuessTimes();
-
-			cout << "Enter your guess number: ";
+			cout << "Enter your guess number(range:" << min << "~" << max << "): ";
 			cin >> PlayerNumber;
 		}
-		cin >> isPlayAgainy;
+		player.print();
+		cout << "Do you want to play again?(y or n)" << endl;
+		cin >> isPlayAgain;
+
+		if (isPlayAgain == "y")
+		{
+			min = 0;
+			max = 100;
+			guessNumber = rand() % 101;
+			player.setGuessTimes(0);
+			cout << "Enter your guess number(range:" << min << "~" << max << "): ";
+			cin >> PlayerNumber;
+		}
 		if (isPlayAgain == "n")
 			break;
 	}
-	
-	player.print();
+	cout << "game over" << endl;
 }
