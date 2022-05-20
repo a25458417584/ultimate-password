@@ -1,6 +1,7 @@
-#include<iostream>
-#include<cstdlib>
-#include<ctime>
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <string>
 using namespace std;
 
 int main()
@@ -10,14 +11,44 @@ int main()
 	string name;
 	cout << "Enter your name: ";
 	cin >> name;
+	Player player(name, 0);
+
+	int max = 100, min = 0;
 
 	int guessNumber = rand() % 101;
-	int PlayerNumber;
+	int PlayerNumber = 0;
 	while (!(PlayerNumber == guessNumber))
 	{
-		//if guessnumber=50
-		//cin 85-->cout not correct, number in 0~84
-		//cin 20-->cout not correct, number in 21~84
-	}
+		cout << "Enter your guess number: ";
+		cin >> PlayerNumber;
 
+		if (PlayerNumber < min || PlayerNumber > max)
+		{
+			cout << "out of range, please Enter again" << endl;
+		}
+		else
+		{
+			if (PlayerNumber < guessNumber)
+			{
+				cout << "Not correct number in :";
+				min = PlayerNumber + 1;
+				cout << "not correct number , now number range in" << min << "~" << max << endl;
+				//player.plusGuessTimes();
+			}
+
+			if (PlayerNumber > guessNumber)
+			{
+				cout << "Not correct number in :";
+				max = PlayerNumber - 1;
+				cout << "not correct number , now number range in" << min << "~" << max << endl;
+				//player.plusGuessTimes();
+			}
+			if (PlayerNumber == guessNumber)
+			{
+				//player.plusGuessTimes();
+				break;
+			}
+		}
+		player.plusGuessTimes();
+	}
 }
