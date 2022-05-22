@@ -55,10 +55,11 @@ int main()
 			cin >> PlayerNumber;
 		}
 		player.print();
-		cout << "Do you want to play again?(y or n)" << endl;
+		
+		cout << "Do you want to play again?(yes or no)" << endl;
 		cin >> isPlayAgain;
 
-		if (isPlayAgain == "y")
+		if (isPlayAgain == "yes")
 		{
 			min = 0;
 			max = 100;
@@ -67,8 +68,8 @@ int main()
 			cout << "Enter your guess number(range:" << min << "~" << max << "): ";
 			cin >> PlayerNumber;
 		}
-		if (isPlayAgain == "n")
+		if (isPlayAgain == "no")
 			break;
 	}
-	cout << "game over" << endl;
+	cout << "Game over" << endl;
 }
