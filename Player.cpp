@@ -4,12 +4,13 @@ Player::Player()
 {
 	setName("John");
 	setPoint(0);
+	setGuessTimes(1);
 }
 Player::Player(string name)
 {
 	setName(name);
 	setPoint(0);
-	setGuessTimes(0);
+	setGuessTimes(1);
 }
 void Player::setName(string name)
 {
