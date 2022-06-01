@@ -15,7 +15,7 @@ int main()
 	int max = 100, min = 0;
 
 	int guessNumber = rand() % 101;
-	cout << guessNumber << endl;
+	cout << guessNumber << endl;//only for test, if the code done, this cout will delete.
 	int PlayerNumber = 0;
 	string isPlayAgain = "y";
 
@@ -90,5 +90,5 @@ int main()
 		if (isPlayAgain == "n")
 			break;
 	}
-	cout << "game over" << endl;
+	cout << "Game over" << endl;
 }
