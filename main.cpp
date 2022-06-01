@@ -139,7 +139,7 @@ void  play1()
 	cin >> name2;
 
 	Player player1(name1);
-	Player player1(name2);
+	Player player2(name2);
 	playFunction1(player1);
 	playFunction1(player2);
 }
@@ -154,6 +154,6 @@ void  play2()
 	cin >> name2;
 	
 	Player player1(name1);
-	Player player1(name2);
+	Player player2(name2);
 	playFunction2(player1 , player2);
 }
