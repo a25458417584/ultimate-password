@@ -30,23 +30,23 @@ int main()
 
 void whoWin(Player p1, Player p2)
 {
-	if (p1.isFailed || p2.isFailed)
+	if (p1.isFailed() || p2.isFailed())
 	{
-		if (p1.isFailed)
+		if (p1.isFailed())
 		
 			cout << "player2 win";
 		
-		if (p2.isFailed)
+		if (p2.isFailed())
 		
 			cout << "player1 win";
 		
-		if (p1.isFailed == p2.isFailed == 1)
+		if (p1.isFailed() == p2.isFailed() == 1)
 		
 			cout << "Draw";
 	}
 	else
 	{
-		if (p1.getGuessTimes() < p2.setGuessTimes())
+		if (p1.getGuessTimes() < p2.getGuessTimes())
 			cout << "player1 win";
 		else if (p1.getGuessTimes() > p2.setGuessTimes())
 			cout << "player2 win";
