@@ -39,6 +39,10 @@ void whoWin(Player p1, Player p2)
 		if (p2.isFailed)
 		
 			cout << "player1 win";
+		
+		if (p1.isFailed == p2.isFailed == 1)
+		
+			cout << "Draw";
 	}
 	else
 	{
