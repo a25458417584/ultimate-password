@@ -34,24 +34,24 @@ void whoWin(Player p1, Player p2)
 	{
 		if (p1.isFailed())
 		
-			cout << "player2 win";
+			cout << "player2 win"<<endl;
 		
 		if (p2.isFailed())
 		
-			cout << "player1 win";
+			cout << "player1 win"<<endl;
 		
 		if (p1.isFailed() ==1 && p2.isFailed() == 1)
 		
-			cout << "Draw";
+			cout << "Draw"<<endl;
 	}
 	else
 	{
 		if (p1.getGuessTimes() < p2.getGuessTimes())
-			cout << "player1 win";
+			cout << "player1 win"<<endl;
 		else if (p1.getGuessTimes() > p2.getGuessTimes())
-			cout << "player2 win";
+			cout << "player2 win"<<endl;
 		else if (p1.getGuessTimes() == p2.getGuessTimes())
-			cout << "draw";
+			cout << "draw"<<endl;
 	}
 	
 }
