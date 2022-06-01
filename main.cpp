@@ -59,7 +59,6 @@ void playFunction1(Player player,int playerNumber)//小俊負責
 	int max = 100, min = 0;
 
 	int guessNumber = rand() % 101;
-	cout << guessNumber << endl;//only for test
 	int playerGuessNumber = 0;
 
 	while (!isFinish)
@@ -129,7 +128,6 @@ void playFunction2(Player player1,Player player2)//小劉負責
 	int max = 100, min = 0;
 
 	int guessNumber = rand() % 101;
-	cout << guessNumber << endl;//only for test
 	int playerGuessNumber = 0;
 
 	Player playerArray[2] = { player1,player2 };
