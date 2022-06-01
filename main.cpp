@@ -8,26 +8,6 @@ using namespace std;
 void play(Player);
 
 void whoWin(Player p1, Player p2);
-/*
-* {
-*		if(p1.isFailed || p2.isFailed)
-*		{
-*			if(p1.isFailed)
-*				cout<<player2 win (string)
-*			if(p2.isFailed)
-*				cout<<player1 win string
-*			if(p1.isFailed==1&&p2.isFailed==1
-*				cout<<Draw;
-*		}
-*		else
-*		{
-*			if(p1.getGuessTime()>p2.getGuessTime())
-*				cout<<player1 win;
-*			else if(p1<p2)-->player2 win
-*			else -->draw
-*		}
-* }
-*/
 
 int main()
 {
