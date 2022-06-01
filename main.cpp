@@ -15,12 +15,13 @@ int main()
 	int max = 100, min = 0;
 
 	int guessNumber = rand() % 101;
-	cout << guessNumber << endl;//only for test, if the code done, this cout will delete
+	cout << guessNumber << endl;
 	int PlayerNumber = 0;
 	string isPlayAgain = "y";
 
 	cout << "Enter your guess number(range:0~100): ";
 	cin >> PlayerNumber;
+	player.plusGuessTimes();
 
 	while (isPlayAgain == "y")
 	{
@@ -28,22 +29,40 @@ int main()
 		{
 			if (PlayerNumber < min || PlayerNumber > max)
 			{
-				cout << "out of range, please Enter again" << endl;
+				cout << "Out of range, please Enter again" << endl;
 			}
 			else
 			{
 				if (PlayerNumber < guessNumber)
 				{
 					min = PlayerNumber + 1;
-					cout << "not correct number , now number range in " << min << "~" << max << endl;
-					player.plusGuessTimes();
+					if (min == max)
+					{
+						cout << "Finale correct number is " << min << ", so you failed." << endl;
+						player.plusGuessTimes();
+						break;
+					}
+					else
+					{
+						cout << "Not correct number , now number range in " << min << "~" << max << endl;
+						player.plusGuessTimes();
+					}
 				}
 
 				if (PlayerNumber > guessNumber)
 				{
 					max = PlayerNumber - 1;
-					cout << "not correct number , now number range in " << min << "~" << max << endl;
-					player.plusGuessTimes();
+					if (min == max)
+					{
+						cout << "Finale correct number is " << max << ", so you failed." << endl;
+						player.plusGuessTimes();
+						break;
+					}
+					else
+					{
+						cout << "Not correct number , now number range in " << min << "~" << max << endl;
+						player.plusGuessTimes();
+					}
 				}
 				if (PlayerNumber == guessNumber)
 				{
@@ -55,11 +74,10 @@ int main()
 			cin >> PlayerNumber;
 		}
 		player.print();
-		
-		cout << "Do you want to play again?(yes or no)" << endl;
+		cout << "Do you want to play again?(y or n)" << endl;
 		cin >> isPlayAgain;
 
-		if (isPlayAgain == "yes")
+		if (isPlayAgain == "y")
 		{
 			min = 0;
 			max = 100;
@@ -67,9 +85,10 @@ int main()
 			player.setGuessTimes(0);
 			cout << "Enter your guess number(range:" << min << "~" << max << "): ";
 			cin >> PlayerNumber;
+			player.plusGuessTimes();
 		}
-		if (isPlayAgain == "no")
+		if (isPlayAgain == "n")
 			break;
 	}
-	cout << "Game over" << endl;
+	cout << "game over" << endl;
 }
