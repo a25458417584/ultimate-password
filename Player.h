@@ -11,17 +11,12 @@ public:
 	Player(string);
 	void setName(string);
 	string getName()const;
-	int getPoint()const;
 	void print();
-	void setPoint(int);
 	int getGuessTimes()const;
 	void setGuessTimes(int);
 	void plusGuessTimes();
 private:
 	string name;
-	int point;
 	int guessTimes;
-	
-
 };
 #endif
