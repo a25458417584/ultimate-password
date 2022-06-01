@@ -48,9 +48,9 @@ void whoWin(Player p1, Player p2)
 	{
 		if (p1.getGuessTimes() < p2.getGuessTimes())
 			cout << "player1 win";
-		else if (p1.getGuessTimes() > p2.setGuessTimes())
+		else if (p1.getGuessTimes() > p2.getGuessTimes())
 			cout << "player2 win";
-		else if (p1.getGuessTimes() == p2.setGuessTimes())
+		else if (p1.getGuessTimes() == p2.getGuessTimes())
 			cout << "draw";
 	}
 	
