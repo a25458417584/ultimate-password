@@ -15,8 +15,11 @@ public:
 	int getGuessTimes()const;
 	void setGuessTimes(int);
 	void plusGuessTimes();
+	void setFailed(bool);
+	bool isFailed()const;
 private:
 	string name;
 	int guessTimes;
+	bool failed;
 };
 #endif
