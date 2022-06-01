@@ -28,6 +28,20 @@ int main()
 	cout << "Game over" << endl;
 }
 
+void whoWin(Player p1, Player p2)
+{
+	if (p1.isFailed || p2.isFailed)
+	{
+		if (p1.isFailed)
+		
+			cout << "player2 win";
+		
+		if (p2.isFailed)
+		
+			cout << "player1 win";
+	}
+}
+
 void playFunction1(Player player)
 {
 	srand(time(0));
