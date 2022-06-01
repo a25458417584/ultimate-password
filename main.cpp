@@ -5,9 +5,9 @@
 #include"Player.h"
 using namespace std;
 
-void play(Player);
-
 void whoWin(Player p1, Player p2);
+
+void play(Player);
 
 void  play1();
 
@@ -145,15 +145,15 @@ void  play1()
 }
 
 void  play2()
-	{
-		string name1;
-		cout << "Enter player1's name";
-		cin >> name1;
-		string name2;
-		cout << "Enter player2's name";
-		cin >> name2;
-
-		Player player1(name1);
-		Player player1(name2);
-		playFunction2(player1 , player2);
-	}
+{
+	string name1;
+	cout << "Enter player1's name";
+	cin >> name1;
+	string name2;
+	cout << "Enter player2's name";
+	cin >> name2;
+	
+	Player player1(name1);
+	Player player1(name2);
+	playFunction2(player1 , player2);
+}
