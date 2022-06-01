@@ -9,6 +9,8 @@ void play(Player);
 
 void whoWin(Player p1, Player p2);
 
+void  play1();
+
 int main()
 {
 	string name1;
@@ -123,4 +125,19 @@ void playFunction1(Player player)
 		}
 	}
 	player.print();
+}
+
+void  play1()
+{
+	string name1;
+	cout << "Enter player1's name";
+	cin >> name1;
+	string name2;
+	cout << "Enter player2's name";
+	cin >> name2;
+
+	Player player1(name1);
+	Player player1(name2);
+	playFunction1(player1);
+	playFunction1(player2);
 }
