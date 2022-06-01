@@ -40,6 +40,14 @@ void whoWin(Player p1, Player p2)
 		
 			cout << "player1 win";
 	}
+	else
+	{
+		if (p1.getGuessTimes() < p2.setGuessTimes())
+			cout << "player1 win";
+		else if (p1.getGuessTimes() > p2.setGuessTimes())
+			cout << "player2 win";
+	}
+	
 }
 
 void playFunction1(Player player)
