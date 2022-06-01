@@ -5,47 +5,39 @@
 #include"Player.h"
 using namespace std;
 
+void playFunction1(Player, int);
+void playFunction2(Player p1, Player p2);
 void whoWin(Player p1, Player p2);
+void play1();
+void play2();
 
-void play(Player);
-
-void  play1();
-
-void  play2();
-
-int main()
+int main()//小俊負責
 {
-	string name1;
-	cout << "Enter player1's name: ";
-	cin >> name1;
-	Player player1(name1);
-	playFunction1(player1);
-
-	string name2;
-	cout << "Enter player2's name: ";
-	cin >> name2;
-	Player player2(name2);
-	playFunction1(player2);
-
-
+	int playMode;
+	cout << "玩法(代碼)1：兩人分開猜密碼，兩者猜密碼次數較小者獲勝" << endl;
+	cout << "玩法(代碼)2：兩人同時猜密碼，猜中者獲勝(不計算猜的次數)" << endl;
+	cout << "請輸入模式代碼：";
+	
+	cin >> playMode;
+	if (playMode == 1)
+		play1();
+	else if (playMode == 2)
+		play2();
+	else
+		cout << "亂輸入，哩Ki宏幹" << endl;
 
 	cout << "Game over" << endl;
 }
 
-void whoWin(Player p1, Player p2)
+void whoWin(Player p1, Player p2)//小萬負責
 {
 	if (p1.isFailed() || p2.isFailed())
 	{
 		if (p1.isFailed())
-
 			cout << "player2 win" << endl;
-
-		if (p2.isFailed())
-
+		else if (p2.isFailed())
 			cout << "player1 win" << endl;
-
-		if (p1.isFailed() == 1 && p2.isFailed() == 1)
-
+		else if (p1.isFailed() == 1 && p2.isFailed() == 1)
 			cout << "Draw" << endl;
 	}
 	else
@@ -55,12 +47,11 @@ void whoWin(Player p1, Player p2)
 		else if (p1.getGuessTimes() > p2.getGuessTimes())
 			cout << "player2 win" << endl;
 		else if (p1.getGuessTimes() == p2.getGuessTimes())
-			cout << "draw" << endl;
+			cout << "Draw" << endl;
 	}
-
 }
 
-void playFunction1(Player player)
+void playFunction1(Player player,int playerNumber)//小俊負責
 {
 	srand(time(0));
 	bool isFinish = 0;
@@ -71,11 +62,11 @@ void playFunction1(Player player)
 	cout << guessNumber << endl;//only for test
 	int playerGuessNumber = 0;
 
-	while (!isFinish)//while(isPlayAgain=="y")
+	while (!isFinish)
 	{
-		while (!(playerGuessNumber == guessNumber))
+		while (!(playerGuessNumber == guessNumber))//小萬負責
 		{
-			cout << "Enter your guess number(range in " << min << "~" << max << "): ";
+			cout << "Player"<<playerNumber << " enter your guess number(range in " << min << "~" << max << "): ";
 			cin >> playerGuessNumber;
 			if (playerGuessNumber < min || playerGuessNumber > max)
 			{
@@ -88,9 +79,9 @@ void playFunction1(Player player)
 					min = playerGuessNumber + 1;
 					if (min == max)//range in 61~61:
 					{
-						cout << "Ultimate password is " << min << ", so you failed." << endl;
+						cout << "Ultimate password is " << min << ", you failed." << endl;
 						isFinish = 1;
-						//player.setFailed(true);
+						player.setFailed(true);
 						player.plusGuessTimes();
 						break;
 					}
@@ -109,6 +100,7 @@ void playFunction1(Player player)
 						cout << "Ultimate password is " << max << ", so you failed." << endl;
 						isFinish = 1;
 						player.plusGuessTimes();
+						player.setFailed(true);
 						break;
 					}
 					else
@@ -128,7 +120,8 @@ void playFunction1(Player player)
 	}
 	player.print();
 }
-void playFunction2(Player player1, Player player2)
+
+void playFunction2(Player player1,Player player2)//小劉負責
 {
 	srand(time(0));
 	bool isFinish = 0;
@@ -136,7 +129,7 @@ void playFunction2(Player player1, Player player2)
 	int max = 100, min = 0;
 
 	int guessNumber = rand() % 101;
-	//cout << guessNumber << endl;
+	cout << guessNumber << endl;//only for test
 	int playerGuessNumber = 0;
 
 	Player playerArray[2] = { player1,player2 };
@@ -144,7 +137,7 @@ void playFunction2(Player player1, Player player2)
 	{
 		for (int i = 0; !(playerGuessNumber == guessNumber); i++)
 		{
-			cout << "Player" << i % 2+1 << "Please enter your guess number(range in " << min << "~" << max << "): ";
+			cout << "Player"<<i%2+1 % 2 << " please enter your guess number(range in " << min << "~" << max << ") : ";
 			cin >> playerGuessNumber;
 			if (playerGuessNumber < min || playerGuessNumber > max)
 			{
@@ -155,11 +148,11 @@ void playFunction2(Player player1, Player player2)
 				if (playerGuessNumber < guessNumber)
 				{
 					min = playerGuessNumber + 1;
-					if (min == max)
+					if (min == max)//range in 61~61:
 					{
 						cout << "Ultimate password is " << min << ", so you failed." << endl;
 						isFinish = 1;
-						playerArray[i% 2].setFailed(1);
+						playerArray[i % 2].setFailed(1);
 						break;
 					}
 					else
@@ -175,7 +168,7 @@ void playFunction2(Player player1, Player player2)
 					{
 						cout << "Ultimate password is " << max << ", so you failed." << endl;
 						isFinish = 1;
-						playerArray[i% 2].setFailed(1);
+						playerArray[i % 2].setFailed(1);
 						break;
 					}
 					else
@@ -196,28 +189,31 @@ void playFunction2(Player player1, Player player2)
 	player2.print();
 	whoWin(playerArray[0], playerArray[1]);
 }
-void  play1()
+
+void  play1()//小萬負責
 {
 	string name1;
-	cout << "Enter player1's name";
+	cout << "Enter player1's name: ";
 	cin >> name1;
 	string name2;
-	cout << "Enter player2's name";
+	cout << "Enter player2's name: ";
 	cin >> name2;
 
 	Player player1(name1);
 	Player player2(name2);
-	playFunction1(player1);
-	playFunction1(player2);
+	playFunction1(player1,1);
+	playFunction1(player2,2);
+
+	whoWin(player1, player2);
 }
 
-void  play2()
+void  play2()//小萬負責
 {
 	string name1;
-	cout << "Enter player1's name";
+	cout << "Enter player1's name: ";
 	cin >> name1;
 	string name2;
-	cout << "Enter player2's name";
+	cout << "Enter player2's name: ";
 	cin >> name2;
 
 	Player player1(name1);
