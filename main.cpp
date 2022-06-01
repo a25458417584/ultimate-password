@@ -27,7 +27,7 @@ int main()
 	Player player2(name2);
 	playFunction1(player2);
 
-	
+
 
 	cout << "Game over" << endl;
 }
@@ -37,27 +37,27 @@ void whoWin(Player p1, Player p2)
 	if (p1.isFailed() || p2.isFailed())
 	{
 		if (p1.isFailed())
-		
-			cout << "player2 win"<<endl;
-		
+
+			cout << "player2 win" << endl;
+
 		if (p2.isFailed())
-		
-			cout << "player1 win"<<endl;
-		
-		if (p1.isFailed() ==1 && p2.isFailed() == 1)
-		
-			cout << "Draw"<<endl;
+
+			cout << "player1 win" << endl;
+
+		if (p1.isFailed() == 1 && p2.isFailed() == 1)
+
+			cout << "Draw" << endl;
 	}
 	else
 	{
 		if (p1.getGuessTimes() < p2.getGuessTimes())
-			cout << "player1 win"<<endl;
+			cout << "player1 win" << endl;
 		else if (p1.getGuessTimes() > p2.getGuessTimes())
-			cout << "player2 win"<<endl;
+			cout << "player2 win" << endl;
 		else if (p1.getGuessTimes() == p2.getGuessTimes())
-			cout << "draw"<<endl;
+			cout << "draw" << endl;
 	}
-	
+
 }
 
 void playFunction1(Player player)
@@ -128,7 +128,74 @@ void playFunction1(Player player)
 	}
 	player.print();
 }
+void playFunction2(Player player1, Player player2)
+{
+	srand(time(0));
+	bool isFinish = 0;
 
+	int max = 100, min = 0;
+
+	int guessNumber = rand() % 101;
+	//cout << guessNumber << endl;
+	int playerGuessNumber = 0;
+
+	Player playerArray[2] = { player1,player2 };
+	while (!isFinish)
+	{
+		for (int i = 0; !(playerGuessNumber == guessNumber); i++)
+		{
+			cout << "Player" << i % 2+1 << "Please enter your guess number(range in " << min << "~" << max << "): ";
+			cin >> playerGuessNumber;
+			if (playerGuessNumber < min || playerGuessNumber > max)
+			{
+				cout << "Out of range, please enter again" << endl;
+			}
+			else
+			{
+				if (playerGuessNumber < guessNumber)
+				{
+					min = playerGuessNumber + 1;
+					if (min == max)
+					{
+						cout << "Ultimate password is " << min << ", so you failed." << endl;
+						isFinish = 1;
+						playerArray[i% 2].setFailed(1);
+						break;
+					}
+					else
+					{
+						cout << "Not ultimate password , please try again." << endl;
+					}
+				}
+
+				if (playerGuessNumber > guessNumber)
+				{
+					max = playerGuessNumber - 1;
+					if (min == max)
+					{
+						cout << "Ultimate password is " << max << ", so you failed." << endl;
+						isFinish = 1;
+						playerArray[i% 2].setFailed(1);
+						break;
+					}
+					else
+					{
+						cout << "Not ultimate password , please try again." << endl;
+					}
+				}
+				if (playerGuessNumber == guessNumber)
+				{
+					playerArray[(i+1) % 2].setFailed(1);
+					cout << "Congratulations! ultimate password is " << guessNumber << endl;
+					isFinish = 1;
+				}
+			}
+		}
+	}
+	player1.print();
+	player2.print();
+	whoWin(playerArray[0], playerArray[1]);
+}
 void  play1()
 {
 	string name1;
@@ -152,8 +219,8 @@ void  play2()
 	string name2;
 	cout << "Enter player2's name";
 	cin >> name2;
-	
+
 	Player player1(name1);
 	Player player2(name2);
-	playFunction2(player1 , player2);
+	playFunction2(player1, player2);
 }
