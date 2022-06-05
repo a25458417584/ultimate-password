@@ -11,12 +11,12 @@ void whoWin(Player& p1, Player& p2);
 void play1();
 void play2();
 
-int main()//¤p«T­t³d
+int main()//å°ä¿Šè² è²¬
 {
 	int playMode;
-	cout << "ª±ªk(¥N½X)1¡G¨â¤H¤À¶}²q±K½X¡A¨âªÌ²q±K½X¦¸¼Æ¸û¤pªÌÀò³Ó" << endl;
-	cout << "ª±ªk(¥N½X)2¡G¨â¤H¦P®É²q±K½X¡A²q¤¤ªÌÀò³Ó(¤£­pºâ²qªº¦¸¼Æ)" << endl;
-	cout << "½Ğ¿é¤J¼Ò¦¡¥N½X¡G";
+	cout << "ç©æ³•(ä»£ç¢¼)1ï¼šå…©äººåˆ†é–‹çŒœå¯†ç¢¼ï¼Œå…©è€…çŒœå¯†ç¢¼æ¬¡æ•¸è¼ƒå°è€…ç²å‹" << endl;
+	cout << "ç©æ³•(ä»£ç¢¼)2ï¼šå…©äººåŒæ™‚çŒœå¯†ç¢¼ï¼ŒçŒœä¸­è€…ç²å‹(ä¸è¨ˆç®—çŒœçš„æ¬¡æ•¸)" << endl;
+	cout << "è«‹è¼¸å…¥æ¨¡å¼ä»£ç¢¼ï¼š";
 	
 	cin >> playMode;
 	if (playMode == 1)
@@ -24,34 +24,34 @@ int main()//¤p«T­t³d
 	else if (playMode == 2)
 		play2();
 	else
-		cout << "¶Ã¿é¤J¡A­ùKi§»·F" << endl;
+		cout << "äº‚è¼¸å…¥ï¼Œå“©Kiå®å¹¹" << endl;
 
 	cout << "Game over" << endl;
 }
 
-void whoWin(Player& p1, Player& p2)//¤p¸U­t³d
+void whoWin(Player& p1, Player& p2)//å°è¬è² è²¬
 {
 	if (p1.isFailed() || p2.isFailed())
 	{
 		if (p1.isFailed() && p2.isFailed())
 			cout << "Draw" << endl;
 		else if (p1.isFailed())
-			cout << "player2 win" << endl;
+			cout << "Player2 win" << endl;
 		else if (p2.isFailed())
-			cout << "player1 win" << endl;
+			cout << "Player1 win" << endl;
 	}
 	else
 	{
 		if (p1.getGuessTimes() < p2.getGuessTimes())
-			cout << "player1 win" << endl;
+			cout << "Player1 win" << endl;
 		else if (p1.getGuessTimes() > p2.getGuessTimes())
-			cout << "player2 win" << endl;
+			cout << "Player2 win" << endl;
 		else if (p1.getGuessTimes() == p2.getGuessTimes())
 			cout << "Draw" << endl;
 	}
 }
 
-void playFunction1(Player& player,int playerNumber)//¤p«T­t³d
+void playFunction1(Player& player,int playerNumber)//å°ä¿Šè² è²¬
 {
 	srand(time(0));
 	bool isFinish = 0;
@@ -63,7 +63,7 @@ void playFunction1(Player& player,int playerNumber)//¤p«T­t³d
 
 	while (!isFinish)
 	{
-		while (!(playerGuessNumber == guessNumber))//¤p¸U­t³d
+		while (!(playerGuessNumber == guessNumber))//å°è¬è² è²¬
 		{
 			cout << "Player"<<playerNumber << " enter your guess number(range in " << min << "~" << max << "): ";
 			cin >> playerGuessNumber;
@@ -119,7 +119,7 @@ void playFunction1(Player& player,int playerNumber)//¤p«T­t³d
 	}
 }
 
-void playFunction2(Player& player1,Player& player2)//¤p¼B­t³d
+void playFunction2(Player& player1,Player& player2)//å°åŠ‰è² è²¬
 {
 	srand(time(0));
 	bool isFinish = 0;
@@ -182,12 +182,14 @@ void playFunction2(Player& player1,Player& player2)//¤p¼B­t³d
 			}
 		}
 	}
-	player1.print();
+	cout << "Player1:";
+	player1.print(); 
+	cout << "Player2:";
 	player2.print();
 	whoWin(playerArray[0], playerArray[1]);
 }
 
-void  play1()//¤p¸U­t³d
+void  play1()//å°è¬è² è²¬
 {
 	string name1;
 	cout << "Enter player1's name: ";
@@ -201,12 +203,14 @@ void  play1()//¤p¸U­t³d
 	playFunction1(player1,1);
 	playFunction1(player2,2);
 
+	cout << "Player1:";
 	player1.print();
+	cout << "Player2:";
 	player2.print();
 	whoWin(player1, player2);
 }
 
-void  play2()//¤p¸U­t³d
+void  play2()//å°è¬è² è²¬
 {
 	string name1;
 	cout << "Enter player1's name: ";
