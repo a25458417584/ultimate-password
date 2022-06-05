@@ -29,7 +29,7 @@ void Player::setGuessTimes(int guessTimes)
 
 void Player::plusGuessTimes()
 {
-	guessTimes++;//guessTimes++
+	guessTimes++;
 }
 
 int Player::getGuessTimes()const
